@@ -1,7 +1,15 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { BaseEntity } from 'src/modules/bases/entities/base.entity';
+import { Student } from 'src/modules/students/entities/student.entity';
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 
-@ObjectType()
-export class Discipline {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+@Entity()
+export class Discipline extends BaseEntity {
+  @Column()
+  name: string;
+
+  @ManyToMany(() => Student, (students) => students.disciplines, {
+    nullable: true,
+  })
+  @JoinTable()
+  students: Student[];
 }

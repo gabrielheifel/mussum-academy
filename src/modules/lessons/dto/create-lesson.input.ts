@@ -1,6 +1,6 @@
 import { InputType } from '@nestjs/graphql';
 
 @InputType()
-export class CreateDisciplineInput {
-  name: string;
+export class CreateLessonInput {
+  description: string;
 }
